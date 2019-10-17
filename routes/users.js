@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
         if (error) {
             res.send(error);
         } else {
-            res.json(data)
+            res.send(data)
         }
     });
 }),
@@ -44,8 +44,8 @@ app.post("/", (req, res) => {
                 timestamp: Date.now()
             }
         }
-        .then(dbExercise => {
-            res.json(dbExercise);
+        .then(dbUser => {
+            res.json(dbUser);
         })
         .catch(err => {
             res.json(err);
