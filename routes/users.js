@@ -1,7 +1,4 @@
-const express = require("express");
-const mongojs = require("mongojs");
-const mongoose = require("mongoose");
-const app = express();
+
 
 //////////////////////////////////////////
 ///   api endpoints for managing users //
@@ -19,38 +16,32 @@ let User = require('../models/user.model');
 // 1. get all users on record
 // GET: /
 // ========================================
-app.get("/", (req, res) => {
-    User.find({}, (error, data) => {
-        if (error) {
-            res.send(error);
-        } else {
-            res.send(data)
-        }
-    });
+router.get("/", async (req, res) => {
+    try {
+        User.findMany({})
+        .then(result => {
+            res.json(result)
+        })
+    }
+    catch(err) {
+        res.json(err);
+    }
 }),
 
 
 // 2. add a new user
 // POST /
 // ========================================
-app.post("/add", (req, res) => {
-    User.create(
-        {
-            _id: mongojs.ObjectId(req.params.id)
-        },
-        {
-            $set: {
-                username: req.body.username,
-                timestamp: Date.now()
-            }
-        }
+router.post("/add", (req, res) => {
+    try {
+        User.create(req.body)
         .then(dbUser => {
             res.json(dbUser);
         })
-        .catch(err => {
+    }
+        catch(err) {
             res.json(err);
-        })
-    )
+        }
 });
 
 module.exports = router;

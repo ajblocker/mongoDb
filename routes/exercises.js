@@ -1,20 +1,7 @@
-const express = require("express");
-const mongojs = require("mongojs");
-const mongoose = require("mongoose");
-const app = express();
 
-const PORT = process.env.PORT || 3000;
 /////////////////////////////////////////////
 //// API endpoints for managing exercises //
 ///////////////////////////////////////////
-const databaseUrl = "exercise";
-const collections = ["username", "description", "duration", "date"];
-
-const db = mongojs(databaseUrl, collections);
-
-db.on("error", error => {
-    console.log("Database Error:", error);
-});
 
 const router = require('express').Router();
 let Exercise = require('../models/exercise.model.js');
@@ -29,8 +16,8 @@ let Exercise = require('../models/exercise.model.js');
 // 1. get all exercise logs on record
 // GET: /
 // ========================================
-app.get("/", (req, res) => {
-    Exercise.create(req)
+router.get("/", (req, res) => {
+    Exercise.find({})
         .then(dbExercise => {
             res.json(dbExercise);
         })
@@ -42,8 +29,8 @@ app.get("/", (req, res) => {
 // 2. add a new exercise log
 // POST: /add
 // ========================================
-app.post("/add", (req, res) => {
-    Exercise.create(req)
+router.post("/add", (req, res) => {
+    Exercise.create(req.body)
         .then(dbExercise => {
             res.json(dbExercise);
         })
@@ -54,10 +41,10 @@ app.post("/add", (req, res) => {
 // 3. retrieve a specfic exercise log
 // GET: /:id
 // ========================================
-app.get("/:id", (req, res) => {
+router.get("/:id", (req, res) => {
     Exercise.findOne(
         {
-            _id: mongojs.ObjectId(req.params.id)
+            "_id": req.params.id
         }
         .then(dbExercise => {
             res.json(dbExercise);
@@ -71,10 +58,10 @@ app.get("/:id", (req, res) => {
 // 4. delete a specfic exercise log
 // DELETE: /:id
 // ========================================
-app.delete("/:id", (req, res) => {
-    Exercise.remove(
+router.delete("/:id", (req, res) => {
+    Exercise.deleteOne(
         {
-            _id: mongojs.ObjectID(req.params.id)
+            "_id": req.params.id
         }
         .then(dbExercise => {
             res.json(dbExercise);
@@ -88,10 +75,10 @@ app.delete("/:id", (req, res) => {
 // with information sent by client on req body
 // POST: /update/:id
 // ========================================
-app.post("/update/:id", (req, res) => {
-    Exercise.update(
+router.post("/update/:id", (req, res) => {
+    Exercise.updateOne(
         {
-            _id: mongojs.ObjectId(req.params.id)
+            "_id": req.params.id
         },
         {
             $set: {
@@ -112,6 +99,3 @@ app.post("/update/:id", (req, res) => {
 
 module.exports = router;
 
-// app.listen(3000, () => {
-//     console.log("App running on port 3000!");
-//   });
