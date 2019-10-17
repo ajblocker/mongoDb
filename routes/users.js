@@ -33,8 +33,8 @@ app.get("/", (req, res) => {
 // 2. add a new user
 // POST /
 // ========================================
-app.post("/", (req, res) => {
-    User.update(
+app.post("/add", (req, res) => {
+    User.create(
         {
             _id: mongojs.ObjectId(req.params.id)
         },

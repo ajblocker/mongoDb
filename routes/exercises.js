@@ -43,7 +43,7 @@ app.get("/", (req, res) => {
 // POST: /add
 // ========================================
 app.post("/add", (req, res) => {
-    Exercise.update(req)
+    Exercise.create(req)
         .then(dbExercise => {
             res.json(dbExercise);
         })
