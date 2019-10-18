@@ -41,44 +41,32 @@ router.post("/add", (req, res) => {
 // 3. retrieve a specfic exercise log
 // GET: /:id
 // ========================================
-router.get("/:id", (req, res) => {
-    Exercise.findOne(
+router.get("/:id", async (req, res) => {
+    await Exercise.findOne(
         {
-            "_id": req.params.id
+            _id: req.params.id
         }
-        .then(dbExercise => {
-            res.json(dbExercise);
-        })
-        .catch(err => {
-            res.json(err);
-        })
-    )
+    );
 });
 
 // 4. delete a specfic exercise log
 // DELETE: /:id
 // ========================================
-router.delete("/:id", (req, res) => {
-    Exercise.deleteOne(
+router.delete("/:id", async (req, res) => {
+    await Exercise.deleteOne(
         {
-            "_id": req.params.id
+            _id: req.params.id
         }
-        .then(dbExercise => {
-            res.json(dbExercise);
-        })
-        .catch(err => {
-            res.json(err);
-        })
     )
 });
 // 5. retrieve a specific exercise log and update it 
 // with information sent by client on req body
 // POST: /update/:id
 // ========================================
-router.post("/update/:id", (req, res) => {
-    Exercise.updateOne(
+router.post("/update/:id", async (req, res) => {
+   await Exercise.updateOne(
         {
-            "_id": req.params.id
+            _id: req.params.id
         },
         {
             $set: {
@@ -88,12 +76,6 @@ router.post("/update/:id", (req, res) => {
                 date: Date.now()
             }
         }
-        .then(dbExercise => {
-            res.json(dbExercise);
-        })
-        .catch(err => {
-            res.json(err);
-        })
     )
 });
 
