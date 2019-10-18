@@ -3,7 +3,7 @@
 ////     Road to Hire      ////
 ///     LifeSports App     ///
 /////////////////////////////
-require('dotenv/types').config();
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // connection to database
-mongoose.connect(uri, { useNewUrlParser: true, 
+mongoose.connect(process.env.ATLAS_URI, { useNewUrlParser: true, 
                         useCreateIndex: true, 
                         useUnifiedTopology: true }
 );
