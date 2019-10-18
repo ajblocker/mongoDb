@@ -81,8 +81,8 @@ router.post("/update/:id", async (req, res) => {
                 username: req.body.username,
                 description: req.body.description,
                 duration: req.body.duration,
-                date: Date.now()
-            }
+                date: req.body.date
+            } 
         }
     )
 });
