@@ -16,12 +16,7 @@ let User = require('../models/user.model');
 // 1. get all users on record
 // GET: /
 // ========================================
-// router.use('*', (req, res) => {
-//     // console.log(req.url, req.method)
-//     // console.log(req.body)
-//     // console.log(req.originalUrl)
-//     // console.log(req.baseUrl)
-// })
+//block of statements to try and what to do if thrown, finds user by id
 router.get("/", (req, res) => {
     console.log(req.url, "hello world")
     try {
@@ -40,6 +35,7 @@ router.get("/", (req, res) => {
 
 // 2. add a new user
 // POST /
+//creates new user and catches any error
 // ========================================
 router.post("/add", (req, res) => {
     console.log(req.body)

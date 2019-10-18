@@ -16,6 +16,7 @@ let Exercise = require('../models/exercise.model.js');
 // 1. get all exercise logs on record
 // GET: /
 // ========================================
+//finds exercise log from Exercise Schema model, sends json data back and catches any error
 router.get("/", (req, res) => {
     Exercise.find({})
         .then(dbExercise => {
@@ -29,6 +30,7 @@ router.get("/", (req, res) => {
 // 2. add a new exercise log
 // POST: /add
 // ========================================
+//creates exercise log from Exercise Schema model, sends json data back and catches any error
 router.post("/add", (req, res) => {
     Exercise.create(req.body)
         .then(dbExercise => {
@@ -41,6 +43,8 @@ router.post("/add", (req, res) => {
 // 3. retrieve a specfic exercise log
 // GET: /:id
 // ========================================
+//find one specific exercise log from Exercise Schema model by id and 
+//await pauses execution of async function
 router.get("/:id", async (req, res) => {
     await Exercise.findOne(
         {
@@ -52,6 +56,8 @@ router.get("/:id", async (req, res) => {
 // 4. delete a specfic exercise log
 // DELETE: /:id
 // ========================================
+//deletes one specific exercise log from Exercise Schema model by id and 
+//await pauses execution of async function
 router.delete("/:id", async (req, res) => {
     await Exercise.deleteOne(
         {
@@ -63,6 +69,8 @@ router.delete("/:id", async (req, res) => {
 // with information sent by client on req body
 // POST: /update/:id
 // ========================================
+//updates one specific exercise log from Exercise Schema model by id and 
+//await pauses execution of async function
 router.post("/update/:id", async (req, res) => {
    await Exercise.updateOne(
         {
