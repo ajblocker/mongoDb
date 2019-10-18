@@ -1,38 +1,42 @@
 
-# LifeSports Challlenge and Hackathon
-
-### About Us
-
-
-### Build Components
-
-### Usage
-
-```js
-
-```
+# LifeSports Challlenge 
 
 #### Challenge Instructions
 
-The challenge requirements for this week are as follows:
+Complete the API endpoints in the LifeSports Express server. Note that all MongoDB functions must use the mongoose data model that is provides. Refactor this code to work with your MongoDB Atlas database. You should update your .env file so that you can use either mongodb locally on on Atlas
 
-1. Complete the API endpoints in the LifeSports Express server. Note that all MongoDB functions must use the mongoose data model that is provides
 
-2. Refactor this code to work with your MongoDB Atlas database. You should update your .env file so that you can use either mongodb locally on on Atlas
+# Available Scripts
 
-3. Deploy your app to Heroku
+In the project directory, you can run:
 
-4. Submit the link to your professionally composed GitHub acct with the Link to your working app by Monday, Oct 21 at 5pm. The github acct should have the link to your live heroku app
+### `npm start`
 
-The APIs will be tested and the github accts reviewed to determine the number of points earned n the challenge submission
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-#### Hackathon Challenge
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-1. Use the working version of your LifeSports app from the Challenge to go the next level!
+### `npm test`
 
-2. Be creative! Develop a new and more engaging UI for your 'workout tracker' and deliver an app that will captivate the LifeSports' coaches!
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-3. Each submission should include an updated UI, with updates, as required, to the mongoose data model, api server and integrations. All Submissions must be deployed with a professionally composed github repo and a live working app on Heroku
+### `npm run build`
 
-4. The deadline for all submissions in Thursday, Oct 24 at 5pm
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
